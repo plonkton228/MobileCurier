@@ -74,5 +74,15 @@ export const ButtonStyle = StyleSheet.create({
         flex: 1,
         marginLeft: 100,
         color: 'white'
+      },
+      ButtonEdit: {
+        fontFamily: 'SF-Pro-Display-Semibold',
+        backgroundColor: '#EA394B',
+        display: 'flex',
+        alignItems: 'center',
+        paddingVertical: 14,
+        color: '#FFFFFF',
+        borderRadius: 16,
+        flex: 1,
       }
 })

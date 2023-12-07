@@ -5,7 +5,7 @@ import { ButtonState, CustomButton } from "share/ui/CustomButton";
 import { CheckBoxeStyle } from "./CheckBoxeStyle";
 import { useAppDispatch, useAppSelector } from "share/lib/hooks/useRedux";
 import { sendProfile } from "entites/Profile/models/actions/sendProfile";
-import { DeleteMessage } from "features/MenuFormEdit/DeleteMessage/ui/DeleteMessage";
+import { DeleteMessage } from "features/MenuFormEdit/Messages";
 import { StateMessage } from "share/ui/Message/ui/Message";
 import { deleteProfile } from "entites/Profile/models/actions/deleteProfile";
 import { useNavigate } from "react-router-native";
@@ -42,7 +42,7 @@ const ClickHandlerModalYes = () => {
      <Text>При отправке данных, вы соглашаетесь со сбором и обработкой персональных данных</Text>
    </View>
    <View style = {CheckBoxeStyle.ButtonsContainer}>
-     <CustomButton state= {ButtonState.ButtonLogin} color="#FFFFFF" disable = { Boolean(profile.data.selfemployment) && Boolean(profile.data.fio) && Boolean(profile.data.birthday) && Boolean(profile.data.car) && Boolean(profile.data.cityId) && check} title="Сохранить изменения" ClickHanlder={ClickHandler}/>
+     <CustomButton state= {ButtonState.ButtonEdit} color="#FFFFFF" disable = { Boolean(profile.data.selfemployment) && Boolean(profile.data.fio) && Boolean(profile.data.birthday) && Boolean(profile.data.car) && Boolean(profile.data.cityId) && check} title="Сохранить изменения" ClickHanlder={ClickHandler}/>
      <TouchableOpacity onPress={ClickHandlerModal} style = {CheckBoxeStyle.ImgCustom}>
           <Image source={require('../models/imgs/Button_delete.png')} />
      </TouchableOpacity>

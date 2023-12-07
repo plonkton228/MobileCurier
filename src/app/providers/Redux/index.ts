@@ -4,12 +4,14 @@ import { viewerReducer } from 'entites/Viewer'
 import { codeReducer } from 'entites/Code'
 import { telephoneReducer } from 'entites/Telephone'
 import { ProfileReducer } from 'entites/Profile'
+import { messageReducer } from 'entites/Message'
 const rootRedudcer = combineReducers({
     locationReducer,
     viewerReducer,
     telephoneReducer,
     codeReducer,
-    ProfileReducer
+    ProfileReducer,
+    messageReducer
 })
 
 

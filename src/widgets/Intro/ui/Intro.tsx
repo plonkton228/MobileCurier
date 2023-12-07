@@ -18,11 +18,9 @@ export const Intro: React.FC = () => {
     return (<>
     {
       isLoading ? <Loader state= {StateLoader.LOADMAP}/> :
-      <ScrollView style = { IntroStyle.IntroContainer}>
-       <ProfileCard/>
-      </ScrollView>
+      <View style = {IntroStyle.IntroContainer}>
+          <ProfileCard/>
+      </View>
     }
-    
-    
     </>)
 }

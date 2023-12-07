@@ -2,3 +2,4 @@
 export { BackButton } from './BackButton/index'
 export { InputsInfo } from './InputsInfo/index'
 export { DatePicker } from './DatePicker/index'
+export { DeleteMessage } from './Messages'

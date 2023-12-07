@@ -1,7 +1,7 @@
 ﻿import { createAsyncThunk } from "@reduxjs/toolkit";
 import { API } from "share/api/API";
-import { Profile, User } from "../types";
 import { NavigateFunction } from "react-router-native";
+import { setSuccessDelete } from "entites/Message";
 export interface DeleteProfileRequest {
  token: string,
  navigate: NavigateFunction
@@ -14,6 +14,10 @@ export const deleteProfile = createAsyncThunk<string, DeleteProfileRequest>('del
                 token:  request.token
             }
         })
+        thunkAPI.dispatch(setSuccessDelete(true))
+        setTimeout(() => {
+            thunkAPI.dispatch(setSuccessDelete(false))
+        }, 5000)
         request.navigate('/MainPage')
         return response.data
     } catch (error) {

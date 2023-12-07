@@ -7,7 +7,8 @@ export enum ButtonState {
   ButtonFillProfile = 'ButtonFillProfile',
   ButtonSelf = 'ButtonSelf',
   ButtonDeleteNo = 'ButtonDeleteNo',
-  ButtonDeleteYes = 'ButtonDeleteYes'
+  ButtonDeleteYes = 'ButtonDeleteYes',
+  ButtonEdit = 'ButtonEdit'
 }
 interface CustomButton  {
     state: ButtonState,
