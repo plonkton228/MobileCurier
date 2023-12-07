@@ -1,0 +1,1 @@
+﻿export { InputsInfo } from './ui/InputsInfo'

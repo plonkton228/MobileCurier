@@ -1,0 +1,5 @@
+﻿export  { ProfileCard } from './ProfileCard/ProfileCard'
+export  { User, Profile } from './models/types'
+export { ProfileForm } from './ProfileForm/ProfileForm'
+export { ProfileEdit } from './ProfileEdit/ProfileEdit'
+export { ProfileReducer, setBirthday, setCar, setFIO, setTown, setSelfEmployment } from './models/sliceProfile'
