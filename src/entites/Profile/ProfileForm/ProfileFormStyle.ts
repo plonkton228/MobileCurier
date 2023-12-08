@@ -13,9 +13,8 @@ export const ProfileFormStyle = StyleSheet.create({
      width: '100%',
      display: 'flex',
      flexDirection: 'row',
-
-     
-
+     justifyContent: 'space-evenly',
+     paddingHorizontal: 20
     },
 
     InfoContainer: {

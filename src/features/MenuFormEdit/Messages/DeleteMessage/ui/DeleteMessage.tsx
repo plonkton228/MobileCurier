@@ -1,11 +1,8 @@
 ﻿import { View , Text, Modal} from "react-native"
-import { Message } from "share/ui/Message"
-import { StateMessage } from "share/ui/Message/ui/Message"
 import {  DeleteMessageStyle } from './DeleteMessageStyle'
 import { ButtonState, CustomButton } from "share/ui/CustomButton"
 export interface DeleteMessageInterface {
     visible: boolean,
-    state: StateMessage.WARNINGMESSAGE,
     clickNo: () => void,
     clickYes: () => void
 
@@ -13,7 +10,6 @@ export interface DeleteMessageInterface {
 export const DeleteMessage: React.FC<DeleteMessageInterface> = (props) => {
     const  {
         visible,
-        state,
         clickNo,
         clickYes
     } = props

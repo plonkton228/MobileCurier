@@ -5,6 +5,7 @@ import { SelectionTown } from "features/MenuForm/SelectionTown/SelectionTown"
 import { InputsInfo } from "features/MenuForm"
 import { SelfemploymentButton } from "features/MenuForm/SelfemploymentButton"
 import { CheckBoxe } from "features/MenuForm/CheckBox"
+import { SendMessageError } from "features/MenuFormEdit"
 export const ProfileForm: React.FC = () => {
     return (<>
     <ScrollView style = {{flex: 1}}>
@@ -21,6 +22,7 @@ export const ProfileForm: React.FC = () => {
         <CheckBoxe/>
      </View>
     </ScrollView>
+    <SendMessageError/>
  
     </>)
 }

@@ -6,7 +6,6 @@ import { CheckBoxeStyle } from "./CheckBoxeStyle";
 import { useAppDispatch, useAppSelector } from "share/lib/hooks/useRedux";
 import { sendProfile } from "entites/Profile/models/actions/sendProfile";
 import { DeleteMessage } from "features/MenuFormEdit/Messages";
-import { StateMessage } from "share/ui/Message/ui/Message";
 import { deleteProfile } from "entites/Profile/models/actions/deleteProfile";
 import { useNavigate } from "react-router-native";
 export const CheckBoxe: React.FC = memo(() => {
@@ -53,7 +52,6 @@ const ClickHandlerModalYes = () => {
   visible = {visible}
   clickNo={ClickHandlerModalNo}
   clickYes={ClickHandlerModalYes}
-  state= {StateMessage.WARNINGMESSAGE}
   />
  </>)
 })

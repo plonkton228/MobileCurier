@@ -13,9 +13,8 @@ export const ProfileEditStyle = StyleSheet.create({
      width: '100%',
      display: 'flex',
      flexDirection: 'row',
-
-     
-
+     justifyContent: 'space-evenly',
+     paddingHorizontal: 20
     },
 
     InfoContainer: {
@@ -28,7 +27,7 @@ export const ProfileEditStyle = StyleSheet.create({
         textAlign: 'center',
         color: '#000000',
         fontSize: 17,
-        fontWeight: '600'
+        fontWeight: '600',
    
         
     }

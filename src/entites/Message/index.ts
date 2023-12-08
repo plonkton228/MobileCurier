@@ -1,1 +1,1 @@
-export { messageReducer, setSuccessDelete} from './models/sliceMessage'
+export { messageReducer, setSuccessDelete , setSuccessSend, setErrorSend } from './models/sliceMessage'

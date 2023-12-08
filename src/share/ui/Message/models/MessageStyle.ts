@@ -1,17 +1,21 @@
-﻿import {StyleSheet} from 'react-native'
+﻿import { StyleSheet } from "react-native";
 
-export const  MessageStyle = StyleSheet.create({
-   WARNINGMESSAGE: {
-    width: "100%",
-    padding: 20,
-    backgroundColor: 'red',
-   },
-
-   text: {
-    textAlign: 'center'
-   },
-
-   ModalContainer: {
-
-   }
+export const MessageStyle = StyleSheet.create({
+    MessageContainer: {
+        display: 'flex',
+        width: '100%',
+        padding: 20,
+    },
+    InnerContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        width: '100%',
+        borderRadius: 16,
+        backgroundColor: 'black',
+        padding: 10
+    },
+    TextDecorate: {
+        color: 'white'
+    }
 })

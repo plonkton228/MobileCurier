@@ -6,6 +6,7 @@ import { validateErrorDate } from "./validateErrorDate";
 import { validateErrorCar } from "./validateErrorCar";
 import { reConstructDate } from "entites/Profile/lib/reConstructDate";
 import { NavigateFunction } from "react-router-native";
+import { setErrorSend, setSuccessSend } from "entites/Message";
 
 export interface sendProfileRequest {
     town: number,
@@ -25,14 +26,26 @@ export const sendProfile = createAsyncThunk<Profile | ErrorsCar[] | ErrorsDates[
     const erorsDate: ErrorsDates[] = validateErrorDate(request.birthday)
     const errorsCar: ErrorsCar[] = validateErrorCar(request.car)
     if (errosFIO.length > 0) {
+        thunkAPI.dispatch(setErrorSend(true))
+        setTimeout(() => {
+            thunkAPI.dispatch(setErrorSend(false))
+        }, 5000)
         return thunkAPI.rejectWithValue(errosFIO)
     }
 
     if (erorsDate.length > 0) {
+        thunkAPI.dispatch(setErrorSend(true))
+        setTimeout(() => {
+            thunkAPI.dispatch(setErrorSend(false))
+        }, 5000)
         return thunkAPI.rejectWithValue(erorsDate)
     }
 
     if (errorsCar.length > 0) {
+        thunkAPI.dispatch(setErrorSend(true))
+        setTimeout(() => {
+            thunkAPI.dispatch(setErrorSend(false))
+        }, 5000)
         return thunkAPI.rejectWithValue(errorsCar)
     }
     try {
@@ -48,6 +61,10 @@ export const sendProfile = createAsyncThunk<Profile | ErrorsCar[] | ErrorsDates[
 
             }
         })
+        thunkAPI.dispatch(setSuccessSend(true))
+        setTimeout(() => {
+            thunkAPI.dispatch(setSuccessSend(false))
+        }, 5000)
         request.navigate('/MainPage')
         
         return response.data.data

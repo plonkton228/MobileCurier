@@ -4,7 +4,7 @@ import { View, Text, ScrollView } from "react-native"
 import {  useAppSelector } from "share/lib/hooks/useRedux"
 import { ProfileCardStyle } from './ProfileCardStyle'
 import { ManageProfileType, ManageUser } from "features/MenuCard/ManageProfile/ManageUser"
-import { DeleteMessageSuccess } from "features/MenuFormEdit/Messages"
+import { DeleteMessageSuccess, SendMessageSuccess } from "features/MenuFormEdit/Messages"
 export const ProfileCard: React.FC = () => {
     const telephone = useAppSelector((state) => state.telephoneReducer)
     const profile = useAppSelector((state) => state.ProfileReducer)
@@ -27,5 +27,6 @@ export const ProfileCard: React.FC = () => {
           <Codecs/>
       </ScrollView>
       <DeleteMessageSuccess/>
+      <SendMessageSuccess/>
     </>)
 }

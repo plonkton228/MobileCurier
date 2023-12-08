@@ -1,17 +1,18 @@
 import { View, Text } from "react-native"
 import { DeleteMessageSuccessStyle } from './DeleteMessageSccessStyle'
 import { useAppSelector } from "share/lib/hooks/useRedux"
+import { Message } from "share/ui/Message"
 
 
 export const DeleteMessageSuccess: React.FC= () => {
     const visible  = useAppSelector((state) => state.messageReducer.succesDelete)
     return (<>
     {
-        visible ?   <View style = {DeleteMessageSuccessStyle.MessageContainer}>
-        <View style = {DeleteMessageSuccessStyle.InnerContainer}>
+          <Message 
+          visible = {visible}
+          >
             <Text style = {DeleteMessageSuccessStyle.TextDecorate}>Ваша анкета удалена</Text>
-        </View>
-    </View> : undefined
+          </Message>
     }
     
 
