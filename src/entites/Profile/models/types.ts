@@ -4,19 +4,15 @@ export interface User {
     token?: string,
     session?: string,
 }
-export enum ErrorsFIO {
-    INCORRECT_FIO = 'INCORRECT_FIO'
-}
 
-export enum ErrorsCar {
-    INCORRECT_CAR = 'INCORRECT_CAR'
-}
 
-export enum ErrorsDates {
-    INCORRECT_DATE = 'INCORRECT_DATE'
-}
+export interface ErrorsProfile {
+    'data.cityId': string[],
+    'data.fio': string[],
+    'data.car': string[],
+    'data.birthday': string[]
+} 
 
-export type ErrorsProfile = ErrorsFIO | ErrorsCar | ErrorsDates
 
 export interface Menu {
    name: string,
@@ -41,6 +37,6 @@ export interface Profile {
         menu: Array<Menu>,
         cities: Array<Citie>,
         isLoading: boolean,
-        errors: ErrorsProfile[]
+        errors: ErrorsProfile
     }
 }

@@ -1,5 +1,5 @@
 ﻿import { memo, useCallback, useState } from "react";
-import { Text, TouchableOpacity, View, Image } from "react-native";
+import { Text, TouchableOpacity, View, Image, ViewStyle } from "react-native";
 import  CheckBox from '@react-native-community/checkbox';
 import { ButtonState, CustomButton } from "share/ui/CustomButton";
 import { CheckBoxeStyle } from "./CheckBoxeStyle";
@@ -8,7 +8,13 @@ import { sendProfile } from "entites/Profile/models/actions/sendProfile";
 import { DeleteMessage } from "features/MenuFormEdit/Messages";
 import { deleteProfile } from "entites/Profile/models/actions/deleteProfile";
 import { useNavigate } from "react-router-native";
-export const CheckBoxe: React.FC = memo(() => {
+export interface CheckBoxeInterface {
+     addStyle?: ViewStyle
+}
+export const CheckBoxe: React.FC<CheckBoxeInterface> = memo((props) => {
+     const {
+      addStyle
+     } = props
    const dispatch = useAppDispatch()
     const [check, setCheck] = useState<boolean>(false)
     const navigate = useNavigate()
@@ -32,7 +38,7 @@ const ClickHandlerModalYes = () => {
          dispatch(sendProfile({fio: profile.data.fio, selfemployment: profile.data.selfemployment, car : profile.data.car, birthday: profile.data.birthday, town: profile.data.cityId, token: viewer.data.token, navigate: navigate }))
     },[check, profile.data, profile.data.errors])
  return(<>
-  <View style = {CheckBoxeStyle.CheckBoxContainer}>
+  <View style = {[CheckBoxeStyle.CheckBoxContainer, addStyle]}>
    <View style = {CheckBoxeStyle.CheckBoxContainerInner}>
     <CheckBox
       value = {check}

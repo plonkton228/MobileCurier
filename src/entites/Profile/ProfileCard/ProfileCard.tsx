@@ -5,11 +5,15 @@ import {  useAppSelector } from "share/lib/hooks/useRedux"
 import { ProfileCardStyle } from './ProfileCardStyle'
 import { ManageProfileType, ManageUser } from "features/MenuCard/ManageProfile/ManageUser"
 import { DeleteMessageSuccess, SendMessageSuccess } from "features/MenuFormEdit/Messages"
+import { Panel } from "share/ui/Panel"
+import { PanelState } from "share/ui/Panel/ui/Panel"
 export const ProfileCard: React.FC = () => {
     const telephone = useAppSelector((state) => state.telephoneReducer)
     const profile = useAppSelector((state) => state.ProfileReducer)
     return (<>
-       <ScrollView>
+     
+      
+       <View style = {{flex: 1}}>
       <View style = {ProfileCardStyle.CardContainer}>
           <View style = {ProfileCardStyle.HeadContainer}>
            <Text style = {ProfileCardStyle.Telephone}>{telephone.telephone}</Text> 
@@ -22,11 +26,11 @@ export const ProfileCard: React.FC = () => {
             }
           </View>
         </View>
-        <ConditionsJob/>
-          <FAQ/>
-          <Codecs/>
-      </ScrollView>
-      <DeleteMessageSuccess/>
-      <SendMessageSuccess/>
+        {
+          profile.data?.menu?.map((element) =>   <Panel state= {PanelState.PANEL_PROFILE} link= {element.link}  text= {element.name}/>)
+        }
+        <DeleteMessageSuccess/>
+        <SendMessageSuccess/>
+      </View>
     </>)
 }

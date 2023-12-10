@@ -6,7 +6,7 @@ import { InputsInfoStyle } from '../models/InputsInfoStyle'
 
 export const InputsInfo: React.FC = memo(() => {
     const Profile = useAppSelector((state) => state.ProfileReducer)
-    const mask = [/\d/, /\d/, /\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/]
+    const mask = [  /\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/, /\d/, /\d/,]
     const dispatch = useAppDispatch()
 
     const onChangeFIO = useCallback((e: string) => {
@@ -21,9 +21,9 @@ export const InputsInfo: React.FC = memo(() => {
  },[Profile.data?.birthday])
     
     return (<>
-     <Input addStyle = {Profile?.data?.errors[0]?.includes('_FIO') ?  InputsInfoStyle.Danger : undefined} inputMode='text' max={50} placeholder='ФИО' value={Profile.data?.fio} ChangeHandler={onChangeFIO} state={InputState.FormInput}  />
-     <Input addStyle = {Profile?.data?.errors[0]?.includes('_DATE') ?  InputsInfoStyle.Danger : undefined} state= {InputState.FormInput} value= {Profile.data?.birthday} ChangeHandler={onChangeDate} mask={mask} inputMode='decimal' max={10} placeholder='ГГГГ.ММ.ДД' />
-     <Input addStyle = {Profile?.data?.errors[0]?.includes('_CAR') ?  InputsInfoStyle.Danger : undefined} inputMode='text' max={50} placeholder='Автомобиль' value={Profile.data?.car} ChangeHandler={onChangeCar} state={InputState.FormInput}  />
+     <Input addStyle = {Profile?.data?.errors?.["data.fio"]?  InputsInfoStyle.Danger : undefined} inputMode='text' max={50} placeholder='ФИО' value={Profile.data?.fio} ChangeHandler={onChangeFIO} state={InputState.FormInput}  />
+     <Input addStyle = {Profile?.data?.errors?.["data.birthday"] ?  InputsInfoStyle.Danger : undefined} state= {InputState.FormInput} value= {Profile.data?.birthday} ChangeHandler={onChangeDate} mask={mask} inputMode='decimal' max={10} placeholder='ДД.ММ.ГГГГ' />
+     <Input addStyle = {Profile?.data?.errors?.["data.car"]?  InputsInfoStyle.Danger : undefined} inputMode='text' max={50} placeholder='Автомобиль' value={Profile.data?.car} ChangeHandler={onChangeCar} state={InputState.FormInput}  />
    
   
     </>)

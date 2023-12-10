@@ -17,6 +17,7 @@ export const Selection: React.FC<SelectionInterface> = (props) => {
     return(<>
     <View style = {{borderRadius: 16, borderColor: '#F3F3F3', borderWidth: 1, overflow: 'hidden'}}> 
     <RNPickerSelect
+    placeholder={{label: 'Выбор города',value: undefined}}
     style={SelectionStyle}
     value={value}
     onValueChange={onChange}

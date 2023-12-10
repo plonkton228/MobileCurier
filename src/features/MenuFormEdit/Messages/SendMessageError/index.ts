@@ -1,1 +1,1 @@
-export { SendMessageError} from './ui/SendMessageError'
+export { SendMessageError } from './ui/SendMessageError'

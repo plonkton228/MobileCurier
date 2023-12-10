@@ -6,13 +6,11 @@ export const CheckBoxeStyle = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        paddingTop: "65%"
   
     },
 
     CheckBoxContainerInner: {
         display: 'flex',
-        flex: 1,
         flexDirection: 'row',
         paddingBottom: 10,
     },

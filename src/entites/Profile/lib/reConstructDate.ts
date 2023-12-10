@@ -1,10 +1,5 @@
 ﻿export const reConstructDate = (Date: string) => {
-    const arrDate = Date.split('')
-    arrDate.forEach((value,index) => {
-        if (value == '.') {
-            arrDate.splice(index, 1, '-')
-        }
-    })
-
-    return arrDate.join('')
+    const arrDate = Date.split('.')
+    const response = arrDate.reverse().join('-')
+    return response
 }

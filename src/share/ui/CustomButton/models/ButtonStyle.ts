@@ -38,6 +38,7 @@ export const ButtonStyle = StyleSheet.create({
 
     },
 
+
     ButtonSelf: {
         borderRadius: 24,
         backgroundColor: '#F5F5F5',

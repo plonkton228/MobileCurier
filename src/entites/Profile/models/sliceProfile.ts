@@ -16,7 +16,7 @@ const initialState: Profile = {
         cities: undefined,
         isLoading: false,
         isUser: false,
-        errors: []
+        errors: undefined
     }
 }
 const sliceProfile = createSlice({
@@ -55,7 +55,6 @@ const sliceProfile = createSlice({
             state.data.menu = action.payload.data.menu
             state.data = action.payload.data 
             action.payload.data?.fio?.length  ? state.data.isUser = true : false
-            state.data.errors = []
         }),
 
         builder.addCase(getProfile.rejected, (state) => {
@@ -69,13 +68,12 @@ const sliceProfile = createSlice({
 
         builder.addCase(sendProfile.fulfilled, (state,action) => {
             state.data.isLoading = false
-            state.data.errors = []
           
         }),
 
         builder.addCase(sendProfile.rejected, (state,action) => {
             state.data.isLoading = false
-            state.data.errors = action.payload as ErrorsProfile[]
+            state.data.errors = action.payload as ErrorsProfile
         }),
 
         builder.addCase(deleteProfile.pending, (state) => {
@@ -85,13 +83,11 @@ const sliceProfile = createSlice({
 
         builder.addCase(deleteProfile.fulfilled, (state,action) => {
             state.data.isLoading = false
-            state.data.errors = []
           
         }),
 
         builder.addCase(deleteProfile.rejected, (state,action) => {
             state.data.isLoading = false
-            state.data.errors = action.payload as ErrorsProfile[]
         })
 
     ))

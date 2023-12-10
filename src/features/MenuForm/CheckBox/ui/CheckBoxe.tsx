@@ -1,12 +1,20 @@
 ﻿import { memo, useCallback, useState } from "react";
-import { Text, View } from "react-native";
+import { StyleProp, Text, View, ViewStyle } from "react-native";
 import  CheckBox from '@react-native-community/checkbox';
 import { ButtonState, CustomButton } from "share/ui/CustomButton";
 import { CheckBoxeStyle } from "./CheckBoxeStyle";
 import { useAppDispatch, useAppSelector } from "share/lib/hooks/useRedux";
 import { sendProfile } from "entites/Profile/models/actions/sendProfile";
 import { useNavigate } from "react-router-native";
-export const CheckBoxe: React.FC = memo(() => {
+import { API } from "share/api/API";
+
+interface CheckBoxStyle {
+     addStyle?: StyleProp<ViewStyle>
+}
+export const CheckBoxe: React.FC<CheckBoxStyle> = memo((props) => {
+     const {
+          addStyle
+     } = props
    const dispatch = useAppDispatch()
    const navigate = useNavigate()
     const [check, setCheck] = useState<boolean>(false)
@@ -19,7 +27,7 @@ export const CheckBoxe: React.FC = memo(() => {
          dispatch(sendProfile({fio: profile.data.fio, selfemployment: profile.data.selfemployment, car : profile.data.car, birthday: profile.data.birthday, town: profile.data.cityId, token: viewer.data.token, navigate: navigate }))
     },[check, profile.data, profile.data.errors])
  return(<>
-  <View style = {CheckBoxeStyle.CheckBoxContainer}>
+  <View style = {[CheckBoxeStyle.CheckBoxContainer, addStyle]}>
    <View style = {CheckBoxeStyle.CheckBoxContainerInner}>
     <CheckBox
       value = {check}

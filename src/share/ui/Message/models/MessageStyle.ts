@@ -2,9 +2,12 @@
 
 export const MessageStyle = StyleSheet.create({
     MessageContainer: {
+        position: 'absolute',
+        height: 50,
+        bottom: 0,
         display: 'flex',
         width: '100%',
-        padding: 20,
+        paddingHorizontal: 20
     },
     InnerContainer: {
         display: 'flex',

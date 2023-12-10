@@ -1,19 +1,19 @@
-﻿import {Image, ScrollView, Text, View} from 'react-native'
+﻿import {Image, Keyboard, ScrollView, View, ViewStyle} from 'react-native'
 import { LoginPageStyle } from '../models/LoginPageStyle'
 import { InputCode, InputNumber, sentNumber } from 'features/Login'
 import { ButtonState, CustomButton } from 'share/ui/CustomButton'
 import { useAppDispatch, useAppSelector } from 'share/lib/hooks/useRedux'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-native'
-import { reset, setSession, setToken } from 'entites/Viewer'
+import { setSession, setToken } from 'entites/Viewer'
 import { User } from 'entites/Profile'
-import { resetCode } from 'entites/Code'
-import { resetTelephone, setTelephone } from 'entites/Telephone'
+import { setTelephone } from 'entites/Telephone'
 import { getProfile } from 'entites/Profile/models/actions/getProfile'
 export const LoginPage: React.FC = () => {
     const viewer = useAppSelector((state) => state.viewerReducer)
     const telephone = useAppSelector((state) => state.telephoneReducer)
+    const [addStyle, setStyle] = useState<ViewStyle>(undefined)
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const ClickHandler = () => {
@@ -31,6 +31,18 @@ export const LoginPage: React.FC = () => {
                 navigate('/MainPage')
             }
         }) 
+
+        Keyboard.addListener('keyboardDidShow', () => {
+            setStyle({display: 'none'})
+      
+          })
+          Keyboard.addListener('keyboardDidHide', () => {
+            setStyle(undefined)
+          })
+          return () => {
+            Keyboard.removeAllListeners('keyboardDidHide,keyboardDidShow')
+          }
+
     }, [])
 
     return (<>
@@ -44,7 +56,7 @@ export const LoginPage: React.FC = () => {
               <InputCode/>
               </View> : undefined
             }
-            <View style = { LoginPageStyle.ButtonContainer }>
+            <View style = { [LoginPageStyle.ButtonContainer, addStyle] }>
              <CustomButton ClickHanlder={ClickHandler}  disable = {telephone.useable && Boolean(telephone.telephone?.length === 18)  } state = {ButtonState.ButtonLogin} title='Отправить код'/>
             </View>
        </ScrollView>

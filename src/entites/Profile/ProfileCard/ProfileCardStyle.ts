@@ -3,7 +3,8 @@ export const ProfileCardStyle = StyleSheet.create({
     CardContainer: {
         padding: 20,
         borderRadius: 16,
-        backgroundColor: '#FFFF'
+        backgroundColor: '#FFFF',
+        overflow: 'visible'
     },
     HeadContainer : {
       display: 'flex',

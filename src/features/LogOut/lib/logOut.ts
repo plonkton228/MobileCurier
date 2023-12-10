@@ -23,6 +23,12 @@ export const logOut = createAsyncThunk<void, LogOutInterface>('logOut', async (r
         })
         return response.data
     } catch (error) {
+        AsyncStorage.removeItem('user').then(() => {
+            thunkAPI.dispatch(reset())
+            thunkAPI.dispatch(resetCode())
+            thunkAPI.dispatch(resetTelephone())
+            request.navigate('/')
+        })
         return thunkAPI.rejectWithValue(error)
     }
 })

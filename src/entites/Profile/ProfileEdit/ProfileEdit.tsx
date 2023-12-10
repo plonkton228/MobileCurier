@@ -1,11 +1,27 @@
 ﻿import { BackButton, InputsInfo, SelectionTown, SendMessageError } from 'features/MenuFormEdit'
 import { CheckBoxe } from 'features/MenuFormEdit/CheckBox'
 import { SelfemploymentButton } from 'features/MenuFormEdit/SelfemploymentButton'
-import { ScrollView, View, Text } from 'react-native'
+import { ScrollView, View, Text, ViewStyle, Keyboard } from 'react-native'
 import { ProfileEditStyle } from './ProfileEditStyle'
+import { useEffect, useState } from 'react'
 export const ProfileEdit: React.FC = () => {
+  const [addStyle, setStyle] = useState<ViewStyle>(undefined)
+
+  useEffect(() => {
+    Keyboard.addListener('keyboardDidShow', () => {
+      setStyle({display: 'none'})
+
+    })
+    Keyboard.addListener('keyboardDidHide', () => {
+      setStyle(undefined)
+    })
+
+    return () => {
+      Keyboard.removeAllListeners('keyboardDidHide,keyboardDidShow')
+    }
+  }, [])
     return(<>
-      <ScrollView style = {{flex: 1}}>
+
     <View style = {ProfileEditStyle.FormContainer}>
         <View style = {ProfileEditStyle.NavigateContainer}>
          <BackButton/>
@@ -16,9 +32,8 @@ export const ProfileEdit: React.FC = () => {
           <InputsInfo/>
         </View>
         <SelfemploymentButton/>
-        <CheckBoxe/>
+        <CheckBoxe addStyle={addStyle}/>
      </View>
-    </ScrollView>
     <SendMessageError/>
     </>)
 }

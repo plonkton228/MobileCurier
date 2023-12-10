@@ -6,6 +6,8 @@ export const ProfileFormStyle = StyleSheet.create({
         paddingHorizontal: 16,
         paddingTop: 40,
         paddingBottom: 14,
+        overflow: 'hidden'
+     
 
     },
 
